@@ -1,0 +1,109 @@
+<style>
+#container {
+    height: 500px; 
+    min-width: 310px; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
+</style>
+
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.js"></script>
+
+<div id="container"></div>
+
+
+
+<script>
+// Prepare demo data
+// Data is joined to map using value of 'hc-key' property by default.
+// See API docs for 'joinBy' for more info on linking data and map.
+    var data = [
+    ['andaman and nicobar', 0],
+       ['andhra pradesh', 40919],
+       ['arunachal pradesh', 465],
+       ['assam', 1159],
+       ['chandigarh', 1],
+       ['chhattisgarh', 10377],
+       ['dadra and nagar haveli', 8],
+       ['daman & diu', 0],
+       ['delhi', 119],
+       ['goa', 48],
+       ['gujarat', 4165],
+       ['haryana', 14535],
+       ['himachal pradesh', 466],
+       ['jammu & kashmir', 2527],
+       ['karnataka', 10414],
+       ['kerala', 1070],
+       ['lakshadweep', 0],
+       ['madhya pradesh', 4334],
+       ['manipur', 342],
+       ['meghalaya', 440],
+       ['mizoram', 106],
+       ['nagaland', 739],
+       ['orissa', 13009],
+       ['pondicherry', 215],
+       ['punjab', 26798],
+       ['rajasthan', 411],
+       ['sikkim', 118],
+       ['tamil nadu', 21902],
+       ['tripura', 639],
+       ['uttar pradesh', 59995],
+       ['uttarakhand', 1819],
+       ['west bengal', 29390]
+];
+
+// Create the chart
+Highcharts.mapChart('container', {
+    chart: {
+        map: 'countries/in/custom/in-all-disputed'
+    },
+
+    title: {
+        text: 'Highmaps basic demo'
+    },
+
+    subtitle: {
+        text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.js">India with disputed territories</a>'
+    },
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    colorAxis: {
+        min: 1,
+        minColor: '#EEEEFF',
+            maxColor: '#000022',
+            stops: [
+                [0, '#EFEFFF'],
+                [0.50, '#17a2b8'],
+                [1, '#000022']
+            ]
+    },
+    series: [{
+        data: data,
+        name: 'Number of Deep Tubewells',
+        states: {
+            hover: {
+                color: '#4f9e82'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+        }
+    }]
+});
+
+
+</script>
